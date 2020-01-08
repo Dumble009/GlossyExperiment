@@ -27,8 +27,8 @@ public class ImageCreator : MonoBehaviour
 		int imageIndex = Random.Range(0, length);
 		string fileName = fileNamesList[index][imageIndex];
 
-		Sprite sprite = Resources.Load<Sprite>(fileName);
-
+		Sprite sprite = Resources.Load<Sprite>((index+1).ToString()+"/"+fileName);
+		Debug.Log(fileName);
 		presenter.ShowImage(sprite);
 	}
 

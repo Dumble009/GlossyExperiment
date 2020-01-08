@@ -30,6 +30,7 @@ public class ExperimentConductor : MonoBehaviour
 	List<int> classList;
 	int currentIndex;
 	int currentClass;
+	bool createJsonFlag = false;
 	[SerializeField]
 	ImageCreator imageCreator;
 	[SerializeField]
@@ -77,7 +78,12 @@ public class ExperimentConductor : MonoBehaviour
 		}
 		else
 		{
-			jsonCreator.CreateJson(cm_Data);
+			if (!createJsonFlag)
+			{
+				jsonCreator.CreateJson(cm_Data);
+
+				createJsonFlag = true;
+			}
 		}
 	}
 }
@@ -87,4 +93,10 @@ public class ConfusionMatrixData
 {
 	public List<int> correctClasses;
 	public List<int> predictedClasses;
+
+	public ConfusionMatrixData()
+	{
+		correctClasses = new List<int>();
+		predictedClasses = new List<int>();
+	}
 }
