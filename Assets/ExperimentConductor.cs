@@ -43,19 +43,19 @@ public class ExperimentConductor : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.Keypad1))
 		{
-			KeyDowned(1);
+			KeyDowned(0);
 		}
 		else if(Input.GetKeyDown(KeyCode.Keypad2))
 		{
-			KeyDowned(2);
+			KeyDowned(1);
 		}
 		else if (Input.GetKeyDown(KeyCode.Keypad3))
 		{
-			KeyDowned(3);
+			KeyDowned(2);
 		}
 		else if (Input.GetKeyDown(KeyCode.Keypad4))
 		{
-			KeyDowned(4);
+			KeyDowned(3);
 		}
 	}
 
