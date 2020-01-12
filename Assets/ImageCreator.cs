@@ -7,19 +7,26 @@ public class ImageCreator : MonoBehaviour
 {
 	private void Awake()
 	{
-		string resourcesPath = Application.dataPath + "/Resources/";
+		string resourcesPath = Application.dataPath + "/Resources/" + rootDirName + "/";
 		fileNamesList = new List<string[]>();
 
 		fileNamesList.Add(GetFileNamesUnderPath(resourcesPath + "1"));
 		fileNamesList.Add(GetFileNamesUnderPath(resourcesPath + "2"));
-		fileNamesList.Add(GetFileNamesUnderPath(resourcesPath + "3"));
-		fileNamesList.Add(GetFileNamesUnderPath(resourcesPath + "4"));
+		if (exConductor.is4Classes)
+		{
+			fileNamesList.Add(GetFileNamesUnderPath(resourcesPath + "3"));
+			fileNamesList.Add(GetFileNamesUnderPath(resourcesPath + "4"));
+		}
 	}
 	
 
 	List<string[]> fileNamesList;
 	[SerializeField]
 	ImagePresenter presenter;
+	[SerializeField]
+	ExperimentConductor exConductor;
+	[SerializeField]
+	string rootDirName;
 
 	public void LoadImage(int index)
 	{
@@ -27,7 +34,7 @@ public class ImageCreator : MonoBehaviour
 		int imageIndex = Random.Range(0, length);
 		string fileName = fileNamesList[index][imageIndex];
 
-		Sprite sprite = Resources.Load<Sprite>((index+1).ToString()+"/"+fileName);
+		Sprite sprite = Resources.Load<Sprite>(rootDirName + "/" + (index + 1).ToString() + "/" + fileName);
 		Debug.Log(fileName);
 		presenter.ShowImage(sprite);
 	}

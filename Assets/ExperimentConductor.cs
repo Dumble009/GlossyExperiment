@@ -7,9 +7,11 @@ public class ExperimentConductor : MonoBehaviour
 {
     void Awake()
     {
+		Random.InitState(1);
 		classList = new List<int>();
 		currentIndex = 0;
-		for (int i = 0; i < 4; i++)
+		int classCount = (is4Classes) ? 4 : 2;
+		for (int i = 0; i < classCount; i++)
 		{
 			for (int j = 0; j < imageCountPerClass; j++)
 			{
@@ -17,7 +19,7 @@ public class ExperimentConductor : MonoBehaviour
 			}
 		}
 		
-		classList = classList.OrderBy(i => System.Guid.NewGuid()).ToList();
+		classList = classList.OrderBy(i => Random.value).ToList();
 
 		cm_Data = new ConfusionMatrixData();
     }
@@ -37,6 +39,7 @@ public class ExperimentConductor : MonoBehaviour
 	int imageCountPerClass;
 	[SerializeField]
 	JsonCreator jsonCreator;
+	public bool is4Classes;
 	ConfusionMatrixData cm_Data;
 
 	private void Update()
@@ -49,11 +52,11 @@ public class ExperimentConductor : MonoBehaviour
 		{
 			KeyDowned(1);
 		}
-		else if (Input.GetKeyDown(KeyCode.Keypad3))
+		else if (Input.GetKeyDown(KeyCode.Keypad3) && is4Classes)
 		{
 			KeyDowned(2);
 		}
-		else if (Input.GetKeyDown(KeyCode.Keypad4))
+		else if (Input.GetKeyDown(KeyCode.Keypad4) && is4Classes)
 		{
 			KeyDowned(3);
 		}
