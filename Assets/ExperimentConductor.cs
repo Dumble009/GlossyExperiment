@@ -18,6 +18,8 @@ public class ExperimentConductor : MonoBehaviour
 				classList.Add(i);
 			}
 		}
+
+		progressPresenter.maxCount = classCount * imageCountPerClass;
 		
 		classList = classList.OrderBy(i => Random.value).ToList();
 
@@ -41,6 +43,8 @@ public class ExperimentConductor : MonoBehaviour
 	JsonCreator jsonCreator;
 	public bool is4Classes;
 	ConfusionMatrixData cm_Data;
+	[SerializeField]
+	ProgressPresenter progressPresenter;
 
 	private void Update()
 	{
@@ -72,6 +76,7 @@ public class ExperimentConductor : MonoBehaviour
 
 	void ShowNextImage()
 	{
+		progressPresenter.currentCount = currentIndex;
 		if (currentIndex < classList.Count)
 		{
 			currentClass = classList[currentIndex];
