@@ -34,7 +34,7 @@ public class ExperimentConductor : MonoBehaviour
 	List<int> classList;
 	int currentIndex;
 	int currentClass;
-	bool createJsonFlag = false;
+	bool finishedFlag = false;
 	[SerializeField]
 	ImageCreator imageCreator;
 	[SerializeField]
@@ -86,11 +86,11 @@ public class ExperimentConductor : MonoBehaviour
 		}
 		else
 		{
-			if (!createJsonFlag)
+			if (!finishedFlag)
 			{
 				jsonCreator.CreateJson(cm_Data);
-
-				createJsonFlag = true;
+				progressPresenter.ShowFinishMessage();
+				finishedFlag = true;
 			}
 		}
 	}

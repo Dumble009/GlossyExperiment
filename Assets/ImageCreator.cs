@@ -12,7 +12,7 @@ public class ImageCreator : MonoBehaviour
 
 		fileNamesList.Add(GetFileNamesUnderPath(resourcesPath + "1"));
 		fileNamesList.Add(GetFileNamesUnderPath(resourcesPath + "2"));
-		if (exConductor.is4Classes)
+		if (is4Classes)
 		{
 			fileNamesList.Add(GetFileNamesUnderPath(resourcesPath + "3"));
 			fileNamesList.Add(GetFileNamesUnderPath(resourcesPath + "4"));
@@ -27,6 +27,8 @@ public class ImageCreator : MonoBehaviour
 	ExperimentConductor exConductor;
 	[SerializeField]
 	string rootDirName;
+	[SerializeField]
+	bool is4Classes;
 
 	public void LoadImage(int index)
 	{

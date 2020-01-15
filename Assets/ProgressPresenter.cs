@@ -9,6 +9,8 @@ public class ProgressPresenter : MonoBehaviour
 	Text progressText;
 	[SerializeField]
 	Slider progressSlider;
+	[SerializeField]
+	Text finishMessage;
 	int _maxCount;
 	public int maxCount {
 		get {
@@ -31,5 +33,12 @@ public class ProgressPresenter : MonoBehaviour
 			progressSlider.value = currentCount;
 			progressText.text = string.Format("{0}/{1}", currentCount, maxCount);
 		}
+	}
+
+	public void ShowFinishMessage()
+	{
+		progressSlider.gameObject.SetActive(false);
+		progressText.gameObject.SetActive(false);
+		finishMessage.gameObject.SetActive(true);
 	}
 }
